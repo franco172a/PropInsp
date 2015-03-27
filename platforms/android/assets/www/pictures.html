@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/propInspectionsApp.css" rel="stylesheet" />
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/toastr.js"></script>
+
+
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-resource.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/lib/angular-animate.js"></script>
+    <script src="js/lib/angular-sanitize.js"></script>
+
+    <script src="js/lib/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/common/common.js"></script>
+    <script src="js/common/logger.js"></script>
+    <script src="js/common/myResource.js"></script>
+    <script src="js/common/spinner.js"></script>
+
+    <script type="text/javascript" src="js/app/pictures/pictures.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+</head>
+    
+<style>
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+</style>
+
+<body>
+
+<div ng-app="main" ng-controller="CarouselDemoCtrl as vm"> 
+  <div class="head">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4">
+                    <!-- Logo and Head Text -->
+                    <div class="logo">
+                        <!-- Logo Icon and Heading -->
+                        <img src="img/icon.png" class="img-responsive" alt="Property Inspections" />
+                        <span><a href="#">Property Inspections</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <body style="background-color: #eee;">
+    <!-- Menu Bar End -->
+    <div class="container">
+          <h3 id="selectedTab" class="headerTabsApp">Images</h3>
+            </div>
+
+<div class="text-center" data-ng-show="vm.showLoading">
+                <i class="fa fa-2x fa-spinner fa-spin"></i>&nbsp; Loading Images ...</div>
+
+<div class="text-center" data-ng-show="vm.noPictures" >
+  No Images to show !!!
+  <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn br-greenee appButtonEdit" ng-click="takePicture()"><i class="fa fa-camera"></i>Take Picture</button>
+      </div>
+    </div>
+</div>          
+
+<div class="row" data-ng-show="vm.availablePictures">
+    <carousel id="mycarousel">
+      <slide ng-repeat="p in pictures">
+        <div style="height:85%; max-height:85%; width:100%; overflow: auto; padding-top: 20px;" class="text-center">
+          <img ng-src="data:image/jpeg;base64,{{p.Data}}" class="img-responsive" style="margin:auto;" width="600" height="534">
+          <div>
+            <div class="text-center">
+              <button type="button" style="margin-top: 20px" class="btn br-greenee" data-ng-show="vm.deletePicture" ng-click="deletePicture(p.Id)"><i class="fa fa-trash-o"></i> Delete</button>
+            </div>
+          </div>
+        </div>
+      </slide>
+    </carousel>
+</div>
+<div class="text-center" data-ng-show="vm.availablePictures" style="margin-top: 15px; margin-left: auto">
+  <button type="button" class="btn br-greenee" ng-click="backtoReview()"><i class="fa fa-chevron-left"></i> Back to Review</button>
+  <button type="button" class="btn br-greenee" ng-click="takePicture()"><i class="fa fa-camera"></i> Take Picture</button>
+  <button type="button" class="btn br-greenee" ng-click="uploadPicture()"><i class="fa fa-upload"></i> Upload Picture</button>
+    <!-- <div class="fileUpload btn btn-info">
+        <span>Upload Picture</span>
+        <input id="imgInp" type="file" class="upload" accept="image/*" />
+    </div> -->
+</div>
+<div class="row" data-ng-show="vm.selectedPicture">
+    <img style="width:80%;height:80%; display: block; margin-left: auto; margin-right: auto;" id="imageToSave" src="" />
+    <div style="margin-top:5%;" class="text-center">
+      <div class="text-center">
+        <button type="button" class="btn br-greenee appButtonEdit; fa fa-chevron-left" ng-click="back()">  Back</button>
+        <button type="button" class="btn br-greenee appButtonEdit; fa fa-floppy-o" data-ng-show="vm.savePicture" ng-click="savePicture()">  Save Picture</button>
+        <button type="button" class="btn br-greenee appButtonEdit; fa fa-camera" ng-click="takePicture()">  Retake Picture</button>
+      </div>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

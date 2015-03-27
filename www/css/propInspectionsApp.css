@@ -1,0 +1,86 @@
+.appbreadcrumb{
+
+	padding: 13px 15px; 
+	background-color: #eee;
+}
+
+
+.appbreadcrumb li a {
+
+	padding: 12px 6px; 
+	margin-right: 0px; 
+	border-radius: 3px; 
+	font-weight: 600; 
+	color: #083469;
+}
+
+.shadowapplogindiv{
+	padding: 15px 10px 20px 30px; margin: 60px 10% 20px 10%; background-color: white; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); border-radius: 2px;
+}
+
+.shadowappPropListdiv{
+	padding: 15px 10px 20px 30px; margin: 10px 5% 10px 5%; background-color: white; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); border-radius: 2px;
+}
+
+.shadowappEditdiv{
+	padding: 15px 10px 40px 10px; margin: 20px 5% 20px 5%; background-color: white; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); border-radius: 2px;
+}
+.shadowappEditdivVal{
+	padding: 15px 10px 40px 10px; margin: 20px 5% 20px 5%; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); border-radius: 2px;
+}
+.headerApp{
+	font-weight: 200; color: #0d4b97;   margin-left: 5%; margin-bottom: 10px;
+}
+
+.marginleftfive{
+	margin-left: 5%;
+}
+
+.appButtonLogIn{
+	padding: 12px 40px 12px 20px; margin-right: 0px; border-radius: 3px; font-weight: 400; font-size: larger;
+}
+
+.appButtonCreateInsp{
+	padding: 12px 40px 12px 20px; margin: -105px 0px 0px 0px; border-radius: 3px; font-weight: 400; font-size: larger;
+}
+
+.appButtonEdit{
+	margin: 40px 50px; padding: 12px 40px 12px 20px; border-radius: 3px; font-weight: 400; font-size: larger;
+}
+
+.appButtonImages{
+	margin: 10px 10px; padding: 12px 40px 12px 20px; border-radius: 3px; font-weight: 400; font-size: larger;
+}
+.headerTabsApp{
+	text-align: center; color: rgba(8, 52, 105, 0.76); font-weight: 400; margin-top: 0px;   text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+	width: 100%; font-size: 3em;
+}
+
+.newLabelApp{
+	font-weight: 400; text-align: left; color: #083469;
+	padding-top: 7px;
+  	margin-top: 0;
+  	margin-bottom: 0;
+}
+
+.deleteItem {
+    text-align: right; margin-bottom: -20px;
+}
+
+.deleteItem i{
+    color: rgb(244, 128, 128); width: 55px; height: 45px;
+}
+
+.bigIcon {
+    padding:0px; border:none;
+}
+
+.bigIcon i{
+    color: #4A9984;
+}
+
+
+
+
+
+

@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Title here -->
+    <title>New Property Review</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700'
+          rel='stylesheet' type='text/css'>
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Animate CSS -->
+    <link href="css/animate.min.css" rel="stylesheet">
+    <!-- Slider Revolution CSS -->
+    <link href="css/rs-settings.css" rel="stylesheet">
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="css/rs-settings-ie8.css">
+    <![endif]-->
+    <!-- Countdown Watch -->
+    <link href="css/jquery.countdown.css" rel="stylesheet">
+    <!-- Portfolio CSS -->
+    <!--<link href="css/prettyPhoto.css" rel="stylesheet">-->
+    <!-- Font awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!--[if IE]>
+    <link rel="stylesheet" href="css/ie-style.css">
+    <![endif]-->
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <!--<link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="css/bootstrap-responsive.css" rel="stylesheet" />-->
+    <!--<link href="css/site.css" rel="stylesheet" />-->
+    <!--<link href="css/ng-grid.css" rel="stylesheet" />
+    <link href="css/customtheme.css" rel="stylesheet">-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/propInspectionsApp.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+    <!--[if IE]>
+    <link rel="stylesheet" href="css/ie-style.css">
+    <![endif]-->
+    <link href="css/toastr.css" rel="stylesheet" />
+    <link href="css/datepicker.css" rel="stylesheet" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
+</head>
+<body style="background-color:#eee">
+    <!-- Head Start -->
+    <div class="head">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4">
+                    <!-- Logo and Head Text -->
+                    <div class="logo">
+                        <!-- Logo Icon and Heading -->
+                        <a href="index.html">
+                            <img src="img/icon.png" class="img-responsive" alt="Property Inspections" />
+                        </a>
+                        <span><a href="propertyList.html#/{{vm.userId}}">Property Inspections</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu Bar End -->
+    <div data-ng-app="main" data-ng-controller="newPropReviewController as vm">
+        <div class="container">
+            <ul class="breadcrumb appbreadcrumb">
+                <li><a href="propertyList.html#/{{vm.userId}}">Properties</a></li>
+                <li>
+                    <a href="propertyInspections.html#{{vm.id}}#{{vm.userId}}${{vm.propertyName}}">
+                        {{vm.propertyName}}
+                        Property Inspections
+                    </a>
+                </li>
+                <li><a class="active">New Property Review</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div id="validationErrorAlert" class="hide">
+                <div id="errorAlert" class="alert alert-error shadowappEditdivVal">
+                    <h4 class="alert-heading">
+                        Validation Errors
+                    </h4>
+                    <div id="dl-validations">
+                        <hr style="border-top: 1px dotted #000; color: #fff; height: 1px; width: 100%; margin: 0px;" />
+                        <p id="reviewTypeError" data-ng-show="vm.revType.Value < 1">
+                            The Review Type is Required
+                        </p>
+                        <p id="invalidSchedDateAlert">
+                            Invalid Scheduled Date
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="text-center" data-ng-show="vm.showLoading">
+                <i class="fa fa-2x fa-spinner fa-spin"></i>{{vm.loadingMsg}}
+            </div>
+            <!--[if lt IE 7]>
+                <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+            <![endif]-->
+            <div data-ng-view="">
+            </div>
+            <div>
+                <div data-ng-init="vm.getNewPropReview()" data-ng-show="!vm.showLoading">
+
+                    <div class="shadowappEditdiv">
+                        <div class="panel-heading">
+                            <h3 class="headerApp">
+                                New Property Review
+                            </h3>
+                        </div>
+                        <div class="sign-content">
+                            <div class="row marginleftfive">
+                                <input data-ng-model="vm.reviewedBy" type="hidden" class="form-control" readonly="readonly" />
+                                <input data-ng-model="vm.revUserId" type="hidden" class="form-control" readonly="readonly" />
+
+                                <div class="col-md-8 col-sm-8">
+                                    <div class="sign-up">
+                                        <div class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label for="Review Type" class="col-lg-4 newLabelApp">Review Type</label>
+                                                <div class="col-lg-8">
+                                                    <select id="selectRevType" class="form-control" style="width: 100%;" data-ng-model="vm.revType" data-ng-options="p.Text for p in vm.reviewTypes">
+                                                        <option value="">Select a Review Type</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Review Date" class="col-lg-4 newLabelApp">Scheduled Date</label>
+                                                <div class="col-lg-8">
+                                                    <input type="date" style="width: 100%;" class="form-control" data-ng-model="vm.scheduledRevDt" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="col-lg-6">
+                                            <a href="#" id="Button1" data-ng-click="vm.addPropReview()"
+                                               class="btn br-greenee appButtonEdit col-lg-6 col-md-3 col-sm-4 col-xs-3"><i class="fa fa-save">&nbsp</i> Save</a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a href="propertyInspections.html#{{vm.id}}#{{vm.userId}}${{vm.propertyName}}"
+                                               class="btn br-greenee appButtonEdit col-lg-6 col-md-3 col-sm-4 col-xs-3"><i class="fa fa-times">&nbsp </i> Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to top -->
+    <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
+    <!-- Javascript files -->
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lib/toastr.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap-datepicker.js"></script>
+    <!-- Lib -->
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/toastr.js"></script>
+    <script src="js/lib/knockout_Last.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-resource.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/lib/angular-animate.js"></script>
+    <script src="js/lib/angular-sanitize.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.10.0.js"></script>
+    <!-- App-->
+    <script src="js/app/app.js"></script>
+    <!--Common-->
+    <script src="js/common/common.js"></script>
+    <script src="js/common/logger.js"></script>
+    <script src="js/common/myResource.js"></script>
+    <script src="js/common/spinner.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/lib/custom.js"></script>
+    <!-- Controller-->
+    <script type="text/javascript" src="js/app/newPropReview/newPropertyReview.js"></script>
+    <!-- Javascript files End -->
+    <script type="text/javascript"> </script>
+</body>
+</html>

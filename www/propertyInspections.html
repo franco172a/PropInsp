@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Title here -->
+    <title>Property Inspections</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700'
+          rel='stylesheet' type='text/css'>
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="css/bootstrap-responsive.css" rel="stylesheet" />-->
+    <!--<link href="css/site.css" rel="stylesheet" />-->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="css/ng-grid.css" rel="stylesheet" />
+    <link href="css/customtheme.css" rel="stylesheet">-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/propInspectionsApp.css" rel="stylesheet" />
+    <!--[if IE]>
+    <link rel="stylesheet" href="css/ie-style.css">
+    <![endif]-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
+</head>
+<body data-ng-app="main" data-ng-controller="inspectionsController as vm" style="background-color:#eee;">
+    <!-- Head Start -->
+    <div class="head">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4">
+                    <!-- Logo and Head Text -->
+                    <div class="logo">
+                        <!-- Logo Icon and Heading -->
+                        <img src="img/icon.png" class="img-responsive" alt="Property Inspections" />
+                        <span><a href="propertyList.html#/{{vm.userId}}">Property Inspections</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu Bar End -->
+    <div class="container">
+        <ul class="breadcrumb appbreadcrumb">
+            <li><a href="propertyList.html#/{{vm.userId}}">Properties</a></li>
+            <li><a>{{vm.propertyName}} </a></li>
+            <li><a>Property Inspections </a></li>
+        </ul>
+    </div>
+    <div class="panel-custom container" style="padding:0.25% 2% 2% 2%; border:0px;">
+        <div class="panel-heading" style="margin-right: 3%; margin-left: 3%; text-align: right;">
+            <a href="newPropertyReview.html#/{{vm.propertyId}}#{{vm.userId}}${{vm.propertyName}}"
+               class="btn br-greenee appButtonCreateInsp"><i class="fa fa-plus">&nbsp</i> Create Property Review</a>
+        </div>
+    </div>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="panel-custom container" style="padding: 0.25% 2% 2% 2%; border: 0px; margin-top: -75px;">
+        <div class="panel-heading" style="margin-right:3%; margin-left:3%;">
+            <div>
+                <input type="text" class="form-control" data-ng-model="searchText" placeholder="search inspections" style=" width:100%;" />
+            </div>
+        </div>
+        <div class="panel-body" style="padding-top: 0px;">
+            <div class="text-center" data-ng-show="vm.showLoading">
+                <i class="fa fa-2x fa-spinner fa-spin"></i>Loading...
+            </div>
+            <div data-ng-init="vm.getProperties()" class="container"
+                 data-ng-show="!vm.showLoading">
+                <div data-ng-repeat="row in vm.propertyInspectionsList | orderBy:'-inspecSchedRevDate' | filter:searchText" class="shadowappPropListdiv">
+                    <a style="width: 100%;" href="edit.html#/{{row.inspecId}}#{{vm.userId}}${{vm.propertyName}}${{row.inspecName}}${{vm.propertyId}}$false">
+                        <div style="width: 100%; position:relative; top:-6px;">
+                            <div class="row" style="margin:1%; padding-top:1%;">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <p style="font-size: x-large; color: #083367;">
+                                        {{row.inspecName}}<br/>
+                                        <span style="font-size: medium;">
+                                            {{row.inspecSchedRevDate | date:'mediumDate'}}
+                                            | {{row.inspecReviewedBy}}
+                                        </span>
+                                        <span style="font-size: medium;" data-ng-show="{{row.inspecReviewStatus.length}}">
+                                            | {{row.inspecReviewStatus}}
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <!-- Social Icon Menu -->
+                                    <div class="social pull-right">
+
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to top -->
+    <!--<span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>-->
+    <!-- Javascript files -->
+    <!-- Lib -->
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/toastr.js"></script>
+    <script src="js/lib/knockout_Last.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-resource.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/lib/angular-animate.js"></script>
+    <script src="js/lib/angular-sanitize.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.10.0.js"></script>
+    <!-- App-->
+    <script src="js/app/app.js"></script>
+    <!--Common-->
+    <script src="js/common/common.js"></script>
+    <script src="js/common/logger.js"></script>
+    <script src="js/common/myResource.js"></script>
+    <script src="js/common/spinner.js"></script>
+    <!-- Controller-->
+    <script src="js/app/propertyInspections/propertyInspections.js"></script>
+    <!-- Javascript files End -->
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

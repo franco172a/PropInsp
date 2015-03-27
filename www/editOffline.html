@@ -1,0 +1,882 @@
+﻿<!DOCTYPE html>
+<html>
+    <!-- Title here -->
+    <title>Property Inspections</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic'
+        rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700'
+        rel='stylesheet' type='text/css'>
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Font awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="css/animate.min.css" rel="stylesheet">
+    <!-- Slider Revolution CSS -->
+    <link href="css/rs-settings.css" rel="stylesheet">
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="css/rs-settings-ie8.css">
+    <![endif]-->
+    <!-- Countdown Watch -->
+    <link href="css/jquery.countdown.css" rel="stylesheet">
+    <!-- Portfolio CSS -->
+    <!--<link href="css/prettyPhoto.css" rel="stylesheet">-->
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/propInspectionsApp.css" rel="stylesheet" />
+    <!--[if IE]>
+    <link rel="stylesheet" href="css/ie-style.css">
+    <![endif]-->
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <!--<link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="css/bootstrap-responsive.css" rel="stylesheet" />-->
+    <!--<link href="css/site.css" rel="stylesheet" />-->
+    <!--<link href="css/ng-grid.css" rel="stylesheet" />
+    <link href="css/customtheme.css" rel="stylesheet">-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/toastr.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+    <!--[if IE]>
+    <link rel="stylesheet" href="css/ie-style.css">
+    <![endif]-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
+    <script type="text/javascript" src="cordova.js"></script>
+</head>
+<body style="background-color: #eee;">
+    <!-- Navigation Menu Button -->
+    <div class="menu-btn">
+        <a href="#" style="font-size: larger;">tabs</a>
+    </div>
+    <!-- Head Start -->
+    <div class="head">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4">
+                    <!-- Logo and Head Text -->
+                    <div class="logo">
+                        <!-- Logo Icon and Heading -->
+                        <a href="index.html">
+                            <img src="img/icon.png" class="img-responsive" alt="Property Inspections" /></a>
+                            <span><a href="propertyList.html#/{{vm.userId}}">Property Inspections</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Bar Start -->
+    <div class="header">
+        <div class="container">
+            <!-- Navigation Menu Start -->
+            <div class="navigation">
+                <div class="row col-md-12">
+                    <!-- Navigation Menu Link Lists -->
+                    <div id="genInf_Tile" class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="menu" onclick="displayTab('#GeneralInformation', 'General Information')"><span class="br-pulipo"><i class="fa fa-inbox"></i>&nbsp; General Information</span></div>
+                    </div>
+                    <div id="propRevItem_Tile" class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="menu" onclick="displayTab('#PropertyReviewItems', 'Property Review Items')"><span class="br-pulipo"><i class="fa fa-bookmark"></i>&nbsp; Property Review Items</span></div>
+                    </div>
+                    <div id="b_Unit_Sel_Tile" class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="menu" onclick="displayTab('#BldgUnitSelection', 'Building/Unit Selection')"><span class="br-pulipo"><i class="fa fa-building"></i>&nbsp; Building/Unit Selection</span></div>
+                    </div>
+                    <div id="revItem_Tile" class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="menu" onclick="displayTab('#ReviewItems', 'Unit Review Items')"><span class="br-pulipo"><i class="fa fa-file-text"></i>&nbsp; Unit Review Items</span></div>
+                    </div>
+                    <div id="tenFind_Tile" class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="menu" onclick="displayTab('#TenantFindings', 'Tenant Findings')"><span class="br-pulipo"><i class="fa fa-search"></i>&nbsp; Tenant Findings &nbsp; &nbsp; &nbsp;</span></div>
+                    </div>
+                    <div id="docReview_Tile" class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="menu" onclick="displayTab('#DocumentationReview', 'Documentation Review')"><span class="br-pulipo"><i class="fa fa-dedent"></i>&nbsp; Documentation Review</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation menu end -->
+    </div>
+    <!-- Menu Bar End -->
+    <div class="container">
+        <div class="container">
+            <div class="row panel-body" id="jsonToSave" style="display: none;">
+                <label class="col-lg-6" style="color: Red">
+                    There is data saved locally, when online click button below to save the DATA.</label>
+                <!--<input type="button" class="btn class=col-lg-3" data-ng-click="vm.saveLocal()" value="Save Local Data" />
+                <input type="button" class="btn class=col-lg-3" data-ng-click="vm.clearLocal()" value="Clear Local Data" />-->
+            </div>
+        </div>
+        <div class="container">
+            <ul class="breadcrumb appbreadcrumb">
+                <li><a href="offlineInspections.html">Offline Inspections</a></li>
+                <li><a class="active">Current Inspection </a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <h3 id="selectedTab" class="headerTabsApp">General Information</h3>
+        </div>
+                <div class="container">
+                <div id="validationErrorAlert" class="hide col-md-12">
+                    <div data-bind="if: validationErrorsPresent" id="errorAlert" class="alert alert-error">
+                        <h4 style="margin-left: 2%; margin-top: 0.5%;">
+                            Validation Errors
+                        </h4>
+                        <dl id="dl-validations" class="dl-horizontal" data-bind="foreach: validationErrors">
+                            <hr style="border-top: 1px dotted #000; color: #fff; height: 1px; width: 100%;" />
+                            <dt data-bind="text: FieldName"></dt>
+                            <!-- ko foreach: Errors -->
+                            <dd data-bind="text: $data">
+                            </dd>
+                            <!-- /ko -->
+                        </dl>
+                    </div>
+                </div>
+                 </div>
+                    <span id="right_Tab" class="get_right_Tab" onclick="getNextTab()" style="display: none;">
+                        <i class="fa fa-chevron-circle-right fa-4x"></i>
+                    </span><span id="left_Tab" class="get_left_Tab"
+                            onclick="getPreviousTab()" style="display: none;">
+                            <i class="fa fa-chevron-circle-left fa-4x">
+                            </i>
+                        </span>                               
+                                <div>
+                                    <section id="GeneralInformation">
+                                        <input type="hidden" data-bind="value: reviewType" />
+                                        <div class="shadowappEditdiv">
+                                            <div class="panel-heading">
+                                            <h3 class="headerApp">
+                                                 General
+                                            </h3>
+                                            </div>  
+                                                <div class="sign-content">
+                                                    <div class="row marginleftfive">
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="sign-up">
+                                                                <div class="form-horizontal" role="form">
+                                                                    <div class="form-group">
+                                                                        <label for="Review Type" class="col-lg-4 newLabelApp">Review Type</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input data-bind="value: reviewTypeDescription()" type="text" class="form-control" readonly="readonly" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="Review Year" class="col-lg-4 newLabelApp">Review Year</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input data-bind="value: reviewYear" type="text" class="form-control" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="Review Grade" class="col-lg-4 newLabelApp">Review Grade</label>
+                                                                        <div class="col-lg-8">
+                                                                            <select  class="form-control" data-bind="options: gradeTypes, optionsValue: 'Value', optionsText: 'Text', value: gradeType, optionsCaption: 'Select a review grade'"></select>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="Reviewer" class="col-lg-4 newLabelApp">Reviewer</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input data-bind="value: reviewedBy" type="text" class="form-control" readonly="readonly" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="Review Date" class="col-lg-4 newLabelApp">Review Date</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input type="date" class="form-control" data-bind="value: reviewDate" />
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="sign-up">
+                                                                <div class="form-horizontal" role="form">
+                                                                    <div class="form-group">
+                                                                        <label for="Scheduled Date" class="col-lg-4 newLabelApp">Scheduled Date</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input type="date" class="form-control" data-bind="value: scheduledRevDt">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="Review Status" class="col-lg-4 newLabelApp">Review Status</label>
+                                                                        <div class="col-lg-8">
+                                                                            <select class="form-control" id="ReviewStatus" data-bind="options: reviewStatuses, optionsValue: 'Value', optionsText: 'Text', value: reviewStatus, optionsCaption: 'Select a review status'"></select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="REAC Score" class="col-lg-4 newLabelApp">REAC Score</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input type="text" class="form-control" data-bind="value: reacScore">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="# of Tenant Files" class="col-lg-4 newLabelApp"># of Tenant Files</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input type="text" class="form-control" data-bind="value: nbrReviewed">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="# of Units" class="col-lg-4 newLabelApp"># of Units</label>
+                                                                        <div class="col-lg-8">
+                                                                            <input type="text" class="form-control" data-bind="value: nbrUnits">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <br/>
+                                        <div class="shadowappEditdiv">
+                                            <div class="panel-heading">                                                                            
+                                                 <h3 class="headerApp">
+                                                    Memo
+                                                </h3>
+                                            </div>
+                                            <div class="row marginleftfive">
+                                                <textarea class="form-control" rows="3" data-bind="value: propMemo" style="width:95%;"></textarea>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="shadowappEditdiv">
+                                            <div class="panel-heading">
+                                            <h3 class="headerApp">                                                                            
+                                                 File Retention Site
+                                            </h3> 
+                                            </div> 
+                                                <div class="sign-content">
+                                                    <div class="row marginleftfive">
+                                                        <div class="col-md-6 col-sm-6">
+                                                            <div class="sign-up">
+                                                                <div class="form-horizontal" role="form">
+                                                                    <div class="form-group">
+                                                                        <label for="EntitySelection" class="col-lg-4 newLabelApp">Select an Entity</label>
+                                                                        <div class="col-lg-8">
+                                                                            <select class="form-control" data-bind="options: $root.myentitymodellist, optionsText: 'EntityName', optionsValue: 'Id', value: $root.entityModelID, optionsCaption: 'Select an Entity'"></select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6 col-sm-6" data-bind='with: $root.entityModelID'>
+                                                            <div class="sign-up">
+                                                                <div class="form-horizontal" role="form">
+                                                                    <div class="form-group">
+                                                                        <label for="ContactSelection" class="col-lg-4 newLabelApp">Select a Contact</label>
+                                                                        <div class="col-lg-8">
+                                                                            <select class="form-control" data-bind="options: $root.mycontactmodellist,
+                                                                                optionsText: function (item) { return item.Contact_LastName + '  ' + item.Contact_FirstName },
+                                                                                optionsValue: 'Id', value: $root.contactModelID, optionsCaption: 'Select a Contact'">
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                         <!--<div class="grid_11 alpha omega">
+                                           <div class="text-center" data-ng-show="vm.uploadingImage"><i class="fa fa-2x fa-spinner fa-spin"></i>uploading image</div>
+                                        </div>-->
+                                        <br />
+                                        <!--<div class="inner-page sign">
+                                            <div class="container">
+                                                <div class="sign-content">
+                                                    <div class="row">
+                                                       <div class="text-center" data-ng-show="vm.loadingImage"><i class="fa fa-2x fa-spinner fa-spin"></i>{{vm.imageMsg}}</div>
+                                                           <div data-ng-show="!vm.loadingImage" class="panel panel-custom container">
+                                                               <div class="panel-heading">                                                                            
+                                                                 Pictures
+                                                                 </div>                                                                            
+                                                                <div class="panel-body" >
+                                                                   <div class="col-md-12 col-sm-12 pull-right" style=" padding:0px 20px">
+                                                                      <div class="pull-right" style=" padding: 20px">
+                                                                        <button data-ng-click="vm.savePicture()" data-ng-disabled="vm.canSaveImage" class="btn btn-default btn-lg"><i class="fa fa-upload"></i></button>
+                                                                        <button data-ng-click="vm.deleteImage()" data-ng-disabled="!vm.canDeleteImage()" class="btn btn-default btn-lg"><i class="fa fa-trash-o"></i></button>
+                                                                        <button type="button" data-ng-click="vm.capturePhotoEdit()" class="btn btn-default btn-lg">
+                                                                        <i class="fa fa-camera"></i> 
+                                                                        </button>
+                                                                                     
+                                                                      </div>
+
+                                                                        <img style="display:none;width:100%;height:40%;" id="smallImage" src="" />     
+                                                           
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="panel-footer">
+                                                            <div class="col-md-12 col-sm-12">
+                                                            <div class="sign-up">    
+                                                            <div class="col-lg-12"> 
+                                                                <div style="padding-top: 10px;" class="container" data-ng-show="!vm.showLoading">
+                                                                    <div data-ng-repeat=" row in vm.imageList">
+                                                                    <div class="col-md-2 col-sm-2" style="padding-top: 10px;">
+                                                                    <img data-ng-click="vm.previewPicture(row)" style="cursor:pointer;width:100%;height:100%;" id="image_{{row.Id}}" src="data:image/jpeg;base64,{{row.Data}}" /> 
+                                                                    </div>
+                                                                                     
+                                                                    </div>
+                                                                </div>
+                                                                </div>           
+
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                        </div> 
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+
+                                    </section>
+                                    <section id="PropertyReviewItems" style="display: none;">
+
+                                    <!-- ko foreach: propertyrevitemslist -->
+                            <div class="shadowappEditdiv">
+                                 <div class="deleteItem">
+                                        <i class="fa fa-times fa-3x" data-bind="click : $root.deletePropertyReviewItem">&nbsp </i>
+                                    </div>
+                                    <input type="hidden" data-bind="value: revItemTemplates" />
+
+                                    <div>
+                                        
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Item" style="width: 100%;" class="newLabelApp">Item</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.myreviewItemsList, optionsText: 'Text', optionsValue: 'Value', value: reviewItem, optionsCaption: 'Select a Review Item'"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Detail" style="width: 100%;" class="newLabelApp">Detail</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.myreviewItemDetailsList, optionsText: 'Text', optionsValue: 'Value', value: revItemDetail, optionsCaption: 'Select a Review Item Detail'"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="ItemDecision" style="width: 100%;" class="newLabelApp">Item Decision</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.myitemDecisionsList, optionsText: 'Text', optionsValue: 'Value', value: itemDecision, optionsCaption: 'Select an Item Decision'"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Target" style="width: 100%;" class="newLabelApp">Target Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input class="form-control" type="date" data-bind="value : targetDt" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Close" style="width: 100%;" class="newLabelApp">Close Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input class="form-control" type="date" data-bind="value : closeDt" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2">
+                                                    <label for="Fixable" style="width: 100%;" class="newLabelApp">Fixable</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="checkbox" data-bind="checked : selectedFix" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2">
+                                                    <label for="Serious" style="width: 100%;" class="newLabelApp">Serious</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="checkbox" data-bind="checked : selectedSerious" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-9 col-sm-9">
+                                                    <label for="Comments" class="newLabelApp">Comments</label>
+                                                    <div>
+                                                        <textarea class="form-control" rows="2" style="width: 100%;" data-bind="value: comments"></textarea>
+                                                    </div>
+                                                </div>
+                                                <!--<div class="col-md-1 col-sm-1">
+                                                <label class="control-label"><br /></label>
+                                                    <div class="col-lg-12">
+                                                        <button data-bind="click: takePicture, visible: hasId" type="button" class="btn btn-default btn-lg"><i class="fa fa-camera"></i> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2">
+                                                <label class="control-label"><br /></label>
+                                                    <div class="col-lg-12">
+                                                    <button data-bind="click:displayImage, visible: hasImage" type="button" class="btn btn-default btn-lg">
+                                                                <i class="fa fa-picture-o"></i> 
+                                                    </div>
+                                                </div>-->
+                                                
+
+                                            
+                                            <!--<div class="col-md-10 col-sm-10" data-bind=" visible: hasId" style=" padding:15px;">
+                                            <span data-bind="visible: showLoading"><i class="fa fa-2x fa-spinner fa-spin"></i> &nbsp; </span>
+                                            <span data-bind="visible: showLoading, text: message"></span>
+                                                    <div class="panel panel-custom" data-bind=" visible: showImage">
+                                                       <div class="panel-heading">                                                                            
+                                                         Picture
+                                                       </div>                                                                            
+                                                    <div class="panel-body" >
+                                                      <div class="col-md-8 col-sm-8 pull-right">      
+                                                        <div class="pull-right">
+                                                                </button>
+                                                                <button data-bind="click: uploadImage, visible: hasChanges" type="button" class="btn btn-default btn-lg"><i class="fa fa-upload"></i></button>
+                                                                <button data-bind="click: deleteImage, visible: showDelete" class="btn btn-default btn-lg"><i class="fa fa-trash-o"></i></button>
+                                                                
+                                                                </button>
+                                                                                     
+                                                        </div>
+                                                        <img alt="picture" style="width:50%;height:50%;" id="prevImage" data-bind="attr:{src: imageSrc}, visible: showImage" />
+                                                      </div>
+                                                    </div>
+                                                    <div class="panel-footer"></div>
+                                                    </div>
+                                               </div> -->
+                                                                                                
+                                              </div>  
+                                        
+                                    </div>
+                          </div>          
+
+                                    <!-- /ko -->
+                            <div class="cta" style="text-align:right;">
+
+                                 <button data-bind="click : $root.addPropertyReviewItem" class="btn br-greenee appButtonEdit">
+                                    <i class="fa fa-plus"></i> Add Property Review Item
+                                </button>
+                            </div>                                
+                                </section>
+                                    <section id="BldgUnitSelection" style="display: none;">
+
+                                         <!-- ko foreach: buildingsunitselections -->
+                                <div data-bind="if: selected">
+                                    <div class="shadowappEditdiv">
+                                          <div class="deleteItem">
+                                        <i class="fa fa-times fa-3x" data-bind="click : $root.deletebuildingsunitselection">&nbsp </i>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-3 col-sm-3">
+                                                <label for="BIN/Unit" style="width: 100%;" class="newLabelApp">BIN/Unit</label>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <label for="Comments" style="width: 100%;" class="newLabelApp">Comments</label>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom:3%;">
+                                            <div class="col-md-3 col-sm-3">
+                                                <input class="form-control" style="width: 100%;" data-bind="value : build_Unit" type="text" readonly="readonly" />
+                                            </div>
+                                            <div class="col-md-7 col-sm-7">
+                                                <textarea class="form-control" rows="2" style="width: 100%;" data-bind="value : comments"></textarea>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div data-bind="ifnot: selected">
+                                        <div class="shadowappEditdiv">
+                                    <div data-bind='if: isInUse'>
+                                    <div data-bind='if: duplicated'>
+                                        <div class="deleteItem">
+                                            <i class="fa fa-times fa-3x" data-bind="click : $root.deletebuildingsunitselection">&nbsp </i>
+                                        </div>
+                                    </div>
+                                    <div data-bind='ifnot: duplicated'>
+                                        <div class="deleteItem">
+                                            <i class="fa fa-times fa-3x" data-bind="click : $root.removebuildingsunitselection">&nbsp </i>
+                                        </div>
+                                    </div>
+                                </div>
+                                        <div class="row">
+                                    <div class="col-md-3 col-sm-3">
+                                                <label for="BIN/Unit" style="width: 100%;" class="newLabelApp">BIN/Unit</label>
+                                            </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <label for="Comments" style="width: 100%;" class="newLabelApp">Comments</label>
+                                        </div>
+                                        </div>
+                                         <div class="row" style="margin-bottom:3%;" data-bind="style: { backgroundColor: duplicated() ? 'white' : '#f2dede', paddingTop: duplicated() ? '' : '3%', paddingBottom: duplicated() ? '' : '3%'}">
+                                            <div class="col-md-3 col-sm-3">
+                                                <select id="currentRow" class="form-control" style="width: 100%;" data-bind="options: $root.mybuildunitcombinations, optionsText: 'UnitNumber', optionsValue: 'UnitNumber', value: build_Unit, optionsCaption: 'Select a BIN/Unit'"></select>
+                                            </div>
+                                            <div class="col-md-7 col-sm-7">
+                                                <textarea class="form-control" rows="2" style="width: 100%;" data-bind="value : comments"></textarea>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    </div>
+                                    
+                                    <!-- /ko -->
+
+                                <div class="cta" style="text-align:right;">
+                                    <button id="addBuildingUnitSelectionButton" data-bind="click : $root.addBuildingUnitSelection" style="margin: 40px 0px;" class="btn br-greenee appButtonEdit"><i class="fa fa-plus"></i> Add Building Unit Selection</button>
+                                </div>
+
+                                </section>
+                                    <section id="ReviewItems" style="display: none;">
+
+                                    <div class="container">
+                                        <div class="col-md-5 col-sm-5">
+                                            <label for="BIN/Unit" class="col-lg-4 control-label">BIN/Unit</label>
+                                            <div class="col-lg-12">
+                                                <select class="form-control"  data-bind="options: $root.myfilteredbuildunitcombinations, optionsText: 'UnitNumber', optionsValue: 'UnitNumber', value: selectedBuildUnitNumber, optionsCaption: 'Select a BIN/Unit'"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ko foreach: unitreviewitemslist -->
+                                    <div data-bind='if: display'>
+                                        <div class="shadowappEditdiv">
+                                             <div class="deleteItem">
+                                    <i class="fa fa-times fa-3x" data-bind="click : $root.deleteunitreviewitem">&nbsp </i>
+                                            </div>
+                                            <div data-bind='if: display' class="row">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Item" style="width: 100%;" class="newLabelApp">Item</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.myreviewItemsList, optionsText: 'Text', optionsValue: 'Value', value: reviewItemDescription, optionsCaption: 'Select a Review Item'"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="ItemDetails" style="width: 100%;" class="newLabelApp">Item Details</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.myreviewItemDetailsList, optionsText: 'Text', optionsValue: 'Value', value: reviewItemDetailDescription, optionsCaption: 'Select a Review Item Detail'"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="ItemDecision" style="width: 100%;" class="newLabelApp">Decision</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.myitemDecisionsList, optionsText: 'Text', optionsValue: 'Value', value: itemDecision, optionsCaption: 'Select an Item Decision'"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-bind='if: display' class="row">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Target" style="width: 100%;" class="newLabelApp">Target Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input class="form-control" type="date" data-bind="value : targetDate" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Close" style="width: 100%;" class="newLabelApp">Close Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input class="form-control" type="date" data-bind="value : closeDate" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1 col-sm-1">
+                                                    <label for="Fixable" style="width: 100%;" class="newLabelApp">Fixable</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="checkbox" data-bind="checked : fixableIssue" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1 col-sm-1">
+                                                    <label for="Serious" style="width: 100%;" class="newLabelApp">Serious</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="checkbox" data-bind="checked : seriousIssue" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1 col-sm-1">
+                                                    <label for="Qualified" style="width: 100%;" class="newLabelApp">Qualified</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="checkbox" data-bind="checked : qualifiedUnit" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-bind='if: display' class="row">
+                                                <div class="col-md-9 col-sm-9">
+                                                    <label for="Comments" class="newLabelApp">Comments/Notes</label>
+                                                    <div class="col-lg-12">
+                                                        <textarea class="form-control" rows="2" style="width: 100%;" data-bind="value: comments"></textarea>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <!--<div class="col-md-1 col-sm-1">
+                                                <label class="control-label"><br /></label>
+                                                    <div class="col-lg-12">
+                                                        <button data-bind="click: takePicture, visible: hasKey" type="button" class="btn btn-default btn-lg"><i class="fa fa-camera"></i> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-2">
+                                                <label class="control-label"><br /></label>
+                                                    <div class="col-lg-12">
+                                                    <button data-bind="click:displayImage, visible: hasImage" type="button" class="btn btn-default btn-lg">
+                                                                <i class="fa fa-picture-o"></i> 
+                                                                </button>
+                                                    </div>
+                                                </div>-->
+                                            </div>
+
+                                            
+                                            <!--<div class="col-md-10 col-sm-10" data-bind=" visible: hasKey" style=" padding:15px;">
+                                            <span data-bind="visible: showLoading"><i class="fa fa-2x fa-spinner fa-spin"></i> &nbsp; </span>
+                                            <span data-bind="visible: showLoading, text: message"></span>
+
+                                                    <div class="panel panel-custom" data-bind=" visible: showImage">
+                                                       <div class="panel-heading">                                                                            
+                                                         Picture
+                                                       </div>                                                                            
+                                                    <div class="panel-body" >
+                                                      <div class="col-md-8 col-sm-8 pull-right">      
+                                                        <div class="pull-right">
+                                                                
+                                                                <button data-bind="click: uploadImage, visible: hasChanges" type="button" class="btn btn-default btn-lg"><i class="fa fa-upload"></i></button>
+                                                                <button data-bind="click: deleteImage, visible: showDelete" class="btn btn-default btn-lg"><i class="fa fa-trash-o"></i></button>       
+                                                        </div>
+                                                        <img alt="picture" style="width:50%;height:50%;" id="Img1" data-bind="attr:{src: imageSrc}, visible: showImage" />
+                                                      </div>
+                                                    </div>
+                                                    <div class="panel-footer"></div>
+                                                    </div> 
+                                               </div>-->
+                                              
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- /ko -->
+
+                                <div class="cta" style="text-align:right;" data-bind='with: selectedBuildUnitNumber'>
+                                    <button data-bind="click : $root.addReviewUnitDetail" class="btn br-greenee appButtonEdit">
+                                    <i class="fa fa-plus"></i> Add Unit Review Item
+                                </button>
+                                </div>
+
+                                </section>
+                                    <section id="TenantFindings" style="display: none;">
+
+                                    <!-- ko foreach: tenantfindingseditmodellist -->
+
+                                    <div class="shadowappEditdiv">
+                                        <div class="deleteItem">
+                                <i class="fa fa-times fa-3x" data-bind="click : $root.deletetenantfinding">&nbsp </i>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="BIN/Unit" style="width: 100%;" class="newLabelApp">BIN/Unit</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.mybuildunitcombinations, optionsText: 'UnitNumber', optionsValue: 'UnitNumber', value: build_Unit, optionsCaption: 'Select a BIN/Unit'"></select>
+                                                    </div>
+                                                </div>
+                                                <div data-bind='with: build_Unit' class="col-md-2 col-sm-2">
+                                                    <label for="Bedrooms" style="width: 100%;" class="newLabelApp"># Bedrooms</label>
+                                                    <div class="col-lg-12">
+                                                        <span data-bind="text: $parent.nbrBedrooms"></span>
+                                                    </div>
+                                                </div>
+                                                <div data-bind='with: build_Unit' class="col-md-2 col-sm-2">
+                                                    <label for="CurrentTenant" style="width: 100%;" class="newLabelApp">Current Tenant</label>
+                                                    <div class="col-lg-12">
+                                                        <span data-bind="text: $parent.currentTenant"></span>
+                                                    </div>
+                                                </div>
+                                                <div data-bind='with: build_Unit' class="col-md-2 col-sm-2">
+                                                    <label for="CertType" style="width: 100%;" class="newLabelApp">Cert Type</label>
+                                                    <div class="col-lg-12">
+                                                        <span data-bind="text: $parent.certType"></span>
+                                                    </div>
+                                                </div>
+                                                <div data-bind='with: build_Unit' class="col-md-2 col-sm-2">
+                                                    <label for="CertDate" style="width: 100%;" class="newLabelApp">Cert Date</label>
+                                                    <div class="col-lg-12">
+                                                        <span  data-bind="text: $parent.cert_date"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="OpenDate" style="width: 100%;" class="newLabelApp">Open Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="date" class="form-control" data-bind="value : opened_date" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="ResolvedDate" style="width: 100%;" class="newLabelApp">Resolved Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input class="form-control" type="date" data-bind="value : resolved_date" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <label for="Finding" style="width: 100%;" class="newLabelApp">Finding</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" data-bind="options: $parent.myFindingsList, optionsText: 'Text', optionsValue: 'Value', value: findingKey, optionsCaption: 'Select a Finding'"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10 col-sm-10">
+                                                    <label for="Comments" class="newLabelApp">Comments</label>
+                                                    <div class="col-lg-12">
+                                                        <textarea class="form-control" rows="2" style="width: 100%;" data-bind="value: comments"></textarea>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /ko -->
+
+                                <div class="cta" style="text-align:right;">
+                                    <button data-bind="click : $root.addTenantFinding" class="btn br-greenee appButtonEdit">
+                                <i class="fa fa-plus"></i> Add Tenant Finding
+                            </button>
+                                </div>
+
+                                </section>
+                                    <section id="DocumentationReview" style="display: none;">
+
+                                    <!-- ko foreach: reviewdocumentslist -->
+
+                                    <div class="shadowappEditdiv">
+                                        <div class="deleteItem">
+                                <i class="fa fa-times fa-3x" data-bind="click : $root.deleteReviewDocument">&nbsp </i>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-3">
+                                                    <label for="Document" style="width: 100%;" class="newLabelApp">Document</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" style="width:100%;" data-bind="options: $parent.myDocumentsList, optionsText: 'Text', optionsValue: 'Value', value: docDescription, optionsCaption: 'Select a Document'"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-3">
+                                                    <label for="DocumentStatus" style="width: 100%;" class="newLabelApp">Document Status</label>
+                                                    <div class="col-lg-12">
+                                                        <select class="form-control" style="width:100%;" data-bind="options: $parent.myDocStatusList, optionsText: 'Text', optionsValue: 'Value', value: doc_Status, optionsCaption: 'Select a Document Status'"></select>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-md-3 col-sm-3">
+                                                    <label for="ReceivedDate" style="width: 100%;" class="newLabelApp">Received Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="date" class="form-control" style="width: 100%;" data-bind="value : received_date" />
+                                                          
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-3 col-sm-3">
+                                                    <label for="AcceptedDate" style="width: 100%;" class="newLabelApp">Accepted Date</label>
+                                                    <div class="col-lg-12">
+                                                        <input type="date" class="form-control" style="width:100%;" data-bind="value : accepted_date" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10 col-sm-10">
+                                                    <label for="Notes" class="newLabelApp">Notes</label>
+                                                    <div class="col-lg-12">
+                                                        <textarea class="form-control" rows="2" style="width: 100%;" data-bind="value: comments"></textarea>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- /ko -->
+
+                                    <div class="cta" style="text-align:right;">
+                                        <button data-bind="click : $root.addReviewDocument" class="btn br-greenee appButtonEdit">
+                                <i class="fa fa-plus"></i> Add Review Document
+                                        </button>
+                                    </div>
+
+                                </section>
+                                </div>
+
+                                 <button id="offlineAccessBtn" style="margin: 40px 50px;"class="btn br-greenee appButtonEdit"
+                                    data-bind="click : $root.savetoLocal"><i class="fa fa-cloud-upload">&nbsp </i> Update</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll to top -->
+        <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>
+        <!-- Javascript files -->
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/lib/jquery.js"></script>
+        <!-- Bootstrap JS -->
+        <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/lib/toastr.js"></script>
+        <script type="text/javascript" src="js/lib/bootstrap-datepicker.js"></script>
+        <!-- Lib -->
+        <script src="js/lib/jquery.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+        <script src="js/lib/toastr.js"></script>
+        <script src="js/lib/knockout_Last.js"></script>
+        <script src="js/lib/angular.js"></script>
+        <script src="js/lib/angular-resource.js"></script>
+        <script src="js/lib/angular-route.js"></script>
+        <script src="js/lib/angular-animate.js"></script>
+        <script src="js/lib/angular-sanitize.js"></script>
+        <script src="js/lib/ui-bootstrap-tpls-0.10.0.js"></script>
+        <!-- App-->
+        <script src="js/app/app.js"></script>
+        <!--Common-->
+        <script src="js/common/common.js"></script>
+        <script src="js/common/logger.js"></script>
+        <script src="js/common/myResource.js"></script>
+        <script src="js/common/spinner.js"></script>
+        <!-- Custom JS -->
+        <script type="text/javascript" src="js/lib/custom.js"></script>
+        <!-- Controller-->
+        <script type="text/javascript" src="js/app/editOffline/editOffline.js"></script>
+        <!-- Phonegap -->
+        <script src="phonegap.js"></script>
+        <!-- Javascript files End -->
+        <script type="text/javascript" charset="utf-8">
+
+
+            var idleTime = 0;
+            $(document).ready(function () {
+
+                loadOfflineData();
+
+                //Increment the idle time counter every minute.
+                var idleInterval = setInterval(timerIncrement, 5000); // 5 seconds
+
+                //Zero the idle timer on mouse movement.
+                $(this).click(function (e) {
+                    idleTime = 0;
+                    $("#right_Tab").show('slow');
+                    $("#left_Tab").show('slow');
+                });
+                $(this).keypress(function (e) {
+                    idleTime = 0;
+                    $("#right_Tab").show('slow');
+                    $("#left_Tab").show('slow');
+                });
+            });
+
+            function timerIncrement() {
+                idleTime = idleTime + 1;
+                if (idleTime > 1) {
+                    $("#right_Tab").hide('slow');
+                    $("#left_Tab").hide('slow');
+                }
+            }
+
+
+        </script>
+</body>
+</html>

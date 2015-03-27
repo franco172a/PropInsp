@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Title here -->
+    <title>Offline Inspections</title>
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="css/bootstrap-responsive.css" rel="stylesheet" />-->
+    <!--<link href="css/site.css" rel="stylesheet" />-->
+     <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="css/ng-grid.css" rel="stylesheet" />
+    <link href="css/customtheme.css" rel="stylesheet">-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/propInspectionsApp.css" rel="stylesheet" />
+    <!--[if IE]>
+    <link rel="stylesheet" href="css/ie-style.css">
+    <![endif]-->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body data-ng-app="main" data-ng-controller="offlineController as vm" style="background-color:#eee;">
+    <!-- Head Start -->
+    <div class="head">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4">
+                    <!-- Logo and Head Text -->
+                    <div class="logo">
+                        <!-- Logo Icon and Heading -->
+                        <img src="img/icon.png" class="img-responsive" alt="Property Inspections" /><span><a href="index.html">Property Inspections</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu Bar End -->
+
+    <div class="container">
+        <ul class="breadcrumb appbreadcrumb">
+            <li><a href="#" data-ng-click="vm.redirectToPropertyList()">Properties</a></li>
+            <li><a class="active">Offline Inspections </a></li>
+        </ul>
+        
+    </div> 
+
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->     
+    <div class="panel-custom container" style="padding:0.25% 2% 2% 2%; border:0px;">
+        <div class="panel-heading" style="margin-right:3%; margin-left:3%;">
+            <div>
+                <input type="text" class="form-control" data-ng-model="searchText" placeholder="search offline inspections" style=" width:100%;" />
+            </div>
+        </div>
+        <div class="panel-body" style="padding-top: 0px;">
+
+            <div class="container" style="margin-right:3%; margin-left:3%;">
+
+                <!--mySpotNameOne-->
+                <div data-ng-show="vm.mySpotNameOne.PropertyId" class="shadowappPropListdiv">
+                    <div style="width: 100%; position:relative; top:-6px;">
+                        <div class="row" style="margin:1%; padding-top:1%;">
+                            <a style="width: 100%;" href="editOffline.html#/mySpotNameOne#offline">
+                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                    <p style="font-size: x-large; color:#083367;">
+                                        {{vm.mySpotNameOne.ReviewTypeDescription}}<br />
+                                        <span style="font-size: medium;">
+                                            {{vm.mySpotNameOne.ScheduledRevDt | date:'mediumDate'}}
+                                            | {{vm.mySpotNameOne.ReviewedBy}}
+                                        </span>
+                                        <span style="font-size: medium;" data-ng-show="{{vm.mySpotNameOneStatus.length}}">
+                                            | {{vm.mySpotNameOneStatus}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <!-- Social Icon Menu -->
+                                <div class="social pull-right">
+                                    <span class="badge" style="padding: 8px 7px;" ng-click="vm.syncData(vm.mySpotNameOne, 'mySpotNameOne', 'mySpotIdOne')">Sync</span>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--mySpotNameOne-->
+                <!--mySpotNameTwo-->
+                <div data-ng-show="vm.mySpotNameTwo.PropertyId" class="shadowappPropListdiv">
+                    <div style="width: 100%; position:relative; top:-6px;">
+                        <div class="row" style="margin:1%; padding-top:1%;">
+                            <a style="width: 100%;" href="editOffline.html#/mySpotNameTwo#offline">
+                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                    <p style="font-size: x-large; color:#083367;">
+                                        {{vm.mySpotNameTwo.ReviewTypeDescription}}<br/>
+                                        <span style="font-size: medium;">
+                                            {{vm.mySpotNameTwo.ScheduledRevDt | date:'mediumDate'}}
+                                            | {{vm.mySpotNameTwo.ReviewedBy}}
+                                        </span>
+                                        <span style="font-size: medium;" data-ng-show="{{vm.mySpotNameTwoStatus.length}}">
+                                            | {{vm.mySpotNameTwoStatus}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <!-- Social Icon Menu -->
+                                <div class="social pull-right">
+                                    <span class="badge" style="padding: 8px 7px;" ng-click="vm.syncData(vm.mySpotNameTwo, 'mySpotNameTwo', 'mySpotIdTwo')">Sync</span>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--mySpotNameTwo-->
+                <!--mySpotNameThree-->
+                <div data-ng-show="vm.mySpotNameThree.PropertyId" class="shadowappPropListdiv">
+                    <div style="width: 100%; position:relative; top:-6px;">
+                        <div class="row" style="margin:1%; padding-top:1%;">
+                            <a style="width: 100%;" href="editOffline.html#/mySpotNameThree#offline">
+                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                    <p style="font-size: x-large; color: #083367;">
+                                        {{vm.mySpotNameThree.ReviewTypeDescription}}<br/>
+                                        <span style="font-size: medium;">
+                                            {{vm.mySpotNameThree.ScheduledRevDt | date:'mediumDate'}}
+                                            | {{vm.mySpotNameThree.ReviewedBy}}
+                                        </span>
+                                        <span style="font-size: medium;" data-ng-show="{{vm.mySpotNameThreeStatus.length}}">
+                                            | {{vm.mySpotNameThreeStatus}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <!-- Social Icon Menu -->
+                                <div class="social pull-right">
+                                    <span class="badge" style="padding: 8px 7px;" ng-click="vm.syncData(vm.mySpotNameThree, 'mySpotNameThree', 'mySpotIdThree')">Sync</span>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--mySpotNameThree-->
+                <!--mySpotNameFour-->
+                <div data-ng-show="vm.mySpotNameFour.PropertyId" class="shadowappPropListdiv">
+                    <div style="width: 100%; position:relative; top:-6px;">
+                        <div class="row" style="margin:1%; padding-top:1%;">
+                            <a style="width: 100%;" href="editOffline.html#/mySpotNameFour#offline">
+                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                    <p style="font-size: x-large; color: #083367;">
+                                        {{vm.mySpotNameFour.ReviewTypeDescription}}<br/>
+                                        <span style="font-size: medium;">
+                                            {{vm.mySpotNameFour.ScheduledRevDt | date:'mediumDate'}}
+                                            | {{vm.mySpotNameFour.ReviewedBy}}
+                                        </span>
+                                        <span style="font-size: medium;" data-ng-show="{{vm.mySpotNameFourStatus.length}}">
+                                            | {{vm.mySpotNameFourStatus}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <!-- Social Icon Menu -->
+                                <div class="social pull-right">
+                                    <span class="badge" style="padding: 8px 7px;" ng-click="vm.syncData(vm.mySpotNameFour, 'mySpotNameFour', 'mySpotIdFour')">Sync</span>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--mySpotNameFour-->
+                <!--mySpotNameFive-->
+                <div data-ng-show="vm.mySpotNameFive.PropertyId">
+                    <div style="width: 100%; position:relative; top:-6px;">
+                        <div class="row" style="margin:1%; padding-top:1%;">
+                            <a style="width: 100%;" href="editOffline.html#/mySpotNameFive#offline">
+                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                    <p style="font-size: x-large; color: #083367;">
+                                        {{vm.mySpotNameFive.ReviewTypeDescription}}<br/>
+                                        <span style="font-size: medium;">
+                                            {{vm.mySpotNameFive.ScheduledRevDt | date:'mediumDate'}}
+                                            | {{vm.mySpotNameFive.ReviewedBy}}
+                                        </span>
+                                        <span style="font-size: medium;" data-ng-show="{{vm.mySpotNameFiveStatus.length}}">
+                                            | {{vm.mySpotNameFiveStatus}}
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <!-- Social Icon Menu -->
+                                <div class="social pull-right">
+                                    <span class="badge" style="padding: 8px 7px;" ng-click="vm.syncData(vm.mySpotNameFive, 'mySpotNameFive', 'mySpotIdFive')">Sync</span>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--mySpotNameFive-->
+            </div>
+        </div>
+
+    </div>
+ 
+
+    <!-- Scroll to top -->
+    <!--<span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span>-->
+
+
+    <!-- Javascript files -->
+    <!-- Lib -->
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/toastr.js"></script>
+    <script src="js/lib/knockout_Last.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-resource.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/lib/angular-animate.js"></script>
+    <script src="js/lib/angular-sanitize.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.10.0.js"></script> 
+    <!-- App-->
+    <script src="js/app/app.js"></script>      
+    <!--Common-->
+    <script src="js/common/common.js"></script>
+    <script src="js/common/logger.js"></script>
+    <script src="js/common/myResource.js"></script>
+    <script src="js/common/spinner.js"></script>
+
+   <!-- Controller-->
+   <script src="js/app/offlineInspections/offlineInspections.js"></script>
+
+
+  
+    
+
+   
+   
+    <!-- Javascript files End -->
+
+    <script type="text/javascript">
+      
+    </script>
+</body>
+</html>
